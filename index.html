@@ -39,7 +39,11 @@
             <button id="addTaskBtn" class="btn btn-primary">Add Task</button>
         </div>
 
-        <ul id="taskList" class="list-group"></ul>
+        <div class="d-flex justify-content-end mb-2">
+            <button id="deleteAllBtn" class="btn btn-danger btn-sm">Delete All</button>
+        </div>
+
+        <ul id="taskList"" class="list-group"></ul>
     </div>
 
     <script>
@@ -73,6 +77,16 @@
                     tasks[index].completed = !tasks[index].completed;
                     saveTasks();
                     renderTasks();
+
+        // Delete All Tasks
+        const deleteAllBtn = document.getElementById("deleteAllBtn");
+        deleteAllBtn.addEventListener("click", () => {
+            if (confirm("Are you sure you want to delete all tasks?")) {
+                tasks = [];
+                saveTasks();
+                renderTasks();
+            }
+        });
                 };
 
                 const editBtn = document.createElement("button");
